@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DBZ else if</title>
+
+    <script type="text/javascript">
+      var curScene = 0
+
+      function changeScene(decision) {
+        var message = "";
+
+        if(curScene == 0){
+          curScene = 1;
+          message = "Aqui você começa a sua jornada"
+          document.getElementById("description").innerHTML = "Você está no caminho da serpente e avistou um inimigo";
+          document.getElementById("button1").value = "Pedir ajuda ao Vegeta"
+          document.getElementById("button2").value = "Lutar com Broly"
+        }
+        else if (curScene == 1){
+          if(decision == 1) {
+            curScene = 2;
+            message = ""
+            document.getElementById("description").innerHTML = "Você pediu ajuda ao Vegeta";
+            document.getElementById("button1").value = "Lutar com Broly"
+            document.getElementById("button2").value = "Fugir"
+          }
+          else {
+            curScene = 3;
+            document.getElementById("description").innerHTML = "Você esta lutando com um inimigo muti forte!";
+            document.getElementById("button1").value = "Continuar lutando"
+            document.getElementById("button2").value = "Fugir"
+          }
+        }
+           else if (curScene == 2) {
+            if (decision == 1) {
+              curScene = 5;
+              document.getElementById("description").innerHTML = "Vocês estão ganhando a luta";
+            document.getElementById("button1").value = "Lutar com todas as forças"
+            document.getElementById("button2").value = "Fazer fusão"
+            }else {
+              curScene = 4;
+              document.getElementById("description").innerHTML = "A terra foi destruida pelo Broly";
+              document.getElementById("button1").value = "Reiniciar"
+              document.getElementById("button2").value = "Reiniciar"
+            }
+            } else if (curScene == 5) {
+              if (decision == 1) {
+                curScene = 7
+                document.getElementById("description").innerHTML = "A energia de vocês acabou";
+              document.getElementById("button1").value = "Reiniciar"
+              document.getElementById("button2").value = "Reiniciar"
+              } else {
+                curScene = 8;
+                document.getElementById("description").innerHTML = "Você está absurdamente forte";
+              document.getElementById("button1").value = "Destruir Broly"
+              document.getElementById("button2").value = "Brincar com a paciência de Broly"
+              }
+            }
+            else if (curScene == 8){
+              if (decision == 1){
+                curScene = 9;
+                document.getElementById("description").innerHTML = "Você destruiu Broly e salvou a Terra!"
+                document.getElementById("button1").value = "PParabêns cLick para receber seu prêmio"
+              document.getElementById("button2").value = "Parabéns cLick para receber seu prêmio"
+              }
+              else{
+                curScene = 10;
+                document.getElementById("description").innerHTML = "Broly ficou furioso demais"
+                document.getElementById("button1").value = "fugir"
+              document.getElementById("button2").value = "Lutar com todas as forças"
+              }
+            }
+          else if (curScene == 3) {
+              if (decision == 1) {
+              curScene = 6;
+              document.getElementById("description").innerHTML = "Você perdeu a batalha!";
+              document.getElementById("button1").value = "Reiniciar"
+              document.getElementById("button2").value = "Reiniciar"
+  
+              } 
+              else {
+              curScene = 4;
+              document.getElementById("description").innerHTML = "A terra foi destruida!";
+              document.getElementById("button1").value = "Reiniciar"
+              document.getElementById("button2").value = "Reiniciar"
+              }
+            }
+            if (curScene == 11){
+              document.getElementById("sceneimg").src = "scene" + curScene + ".gif"
+        if (message != "")
+          alert(message)
+            }
+            else{
+        document.getElementById("sceneimg").src = "scene" + curScene + ".jpg"
+        if (message != "")
+          alert(message)
+            }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div style="margin-top: 100px; text-align: center">
+      <p id="description">Testando if / else de forma divertida</p>
+      <img
+        id="sceneimg"
+        src="scene0.jpg"
+        alt="img referente a escolha"
+        style="width: 320px; height: 280px"
+      /><br />
+      Escolha
+      <input
+        id="button1"
+        type="button"
+        id="desicion1"
+        value="iniciar"
+        onclick="changeScene(1)"
+      />
+      <input
+        id="button2"
+        type="button"
+        id="desicion2"
+        value="iniciar"
+        onclick="changeScene(2)"
+      />
+    </div>
+  </body>
+</html>
