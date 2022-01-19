@@ -8,18 +8,26 @@
 
     <script type="text/javascript">
       var curScene = 0
-
+     
+      function Muda(){
+        
+        
+      }
+      setInterval(Muda, 1)
       function changeScene(decision) {
-        var message = "";
+        var message = "teste";
+        
 
-        if(curScene == 0){
+        switch(curScene){
+          case 0:
           curScene = 1;
           message = "Aqui você começa a sua jornada"
           document.getElementById("description").innerHTML = "Você está no caminho da serpente e avistou um inimigo";
           document.getElementById("button1").value = "Pedir ajuda ao Vegeta"
           document.getElementById("button2").value = "Lutar com Broly"
-        }
-        else if (curScene == 1){
+          document.getElementById("button2").style.display = 'inline'
+          break;
+        case 1:
           if(decision == 1) {
             curScene = 2;
             message = ""
@@ -33,20 +41,21 @@
             document.getElementById("button1").value = "Continuar lutando"
             document.getElementById("button2").value = "Fugir"
           }
-        }
-           else if (curScene == 2) {
+          break;
+           case 2:
             if (decision == 1) {
               curScene = 5;
               document.getElementById("description").innerHTML = "Vocês estão ganhando a luta";
-            document.getElementById("button1").value = "Lutar com todas as forças"
-            document.getElementById("button2").value = "Fazer fusão"
+              document.getElementById("button1").value = "Lutar com todas as forças"
+              document.getElementById("button2").value = "Fazer fusão"
             }else {
               curScene = 4;
               document.getElementById("description").innerHTML = "A terra foi destruida pelo Broly";
               document.getElementById("button1").value = "Reiniciar"
               document.getElementById("button2").value = "Reiniciar"
             }
-            } else if (curScene == 5) {
+            break;
+            case 5:
               if (decision == 1) {
                 curScene = 7
                 document.getElementById("description").innerHTML = "A energia de vocês acabou";
@@ -58,8 +67,8 @@
               document.getElementById("button1").value = "Destruir Broly"
               document.getElementById("button2").value = "Brincar com a paciência de Broly"
               }
-            }
-            else if (curScene == 8){
+              break;
+            case 8:
               if (decision == 1){
                 curScene = 9;
                 document.getElementById("description").innerHTML = "Você destruiu Broly e salvou a Terra!"
@@ -72,8 +81,8 @@
                 document.getElementById("button1").value = "fugir"
               document.getElementById("button2").value = "Lutar com todas as forças"
               }
-            }
-          else if (curScene == 3) {
+              break;
+              case 3:
               if (decision == 1) {
               curScene = 6;
               document.getElementById("description").innerHTML = "Você perdeu a batalha!";
@@ -85,10 +94,13 @@
               curScene = 4;
               document.getElementById("description").innerHTML = "A terra foi destruida!";
               document.getElementById("button1").value = "Reiniciar"
-              document.getElementById("button2").value = "Reiniciar"
+              document.getElementById("button2").style.display = 'none'
               }
-            }
-            if (curScene == 11){
+              break;
+           case 4:
+              curScene = 0;  }     
+          if (curScene == 9){
+            
               document.getElementById("sceneimg").src = "scene" + curScene + ".gif"
         if (message != "")
           alert(message)
@@ -102,7 +114,7 @@
     </script>
   </head>
 
-  <body>
+  <body onload="Muda()">
     <div style="margin-top: 100px; text-align: center">
       <p id="description">Testando if / else de forma divertida</p>
       <img
@@ -118,6 +130,7 @@
         id="desicion1"
         value="iniciar"
         onclick="changeScene(1)"
+        
       />
       <input
         id="button2"
